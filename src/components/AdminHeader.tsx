@@ -22,7 +22,8 @@ const AdminHeader: React.FC = () => {
         <nav>
           <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none' }}>
             <li>
-              <Link to="/admin" style={{ 
+              <Link to="/admin" 
+              style={{ 
                 color: 'var(--color-text)', 
                 textDecoration: 'none',
                 padding: '0.5rem',

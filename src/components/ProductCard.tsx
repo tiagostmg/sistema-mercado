@@ -31,14 +31,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) => {
         <button 
           className="btn-secondary" 
           onClick={handleEdit}
-          style={{ padding: '6px 12px' }}
         >
           Editar
         </button>
         <button 
           className="btn-danger" 
           onClick={handleDelete}
-          style={{ padding: '6px 12px' }}
         >
           Excluir
         </button>
