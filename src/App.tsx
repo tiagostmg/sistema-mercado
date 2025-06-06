@@ -1,23 +1,19 @@
-import { Header } from './components/Header';
-import { Card } from './components/Card';
-import { getClient } from './services/clientService';
-async function fetchClients() {
-  try {
-    const clients = await getClient();
-    console.log(clients);
-  } catch (error) {
-    console.error('Failed to fetch clients:', error);
-  }
-}
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import AdminDashboard from './pages/AdminDashboard';
+import ProductForm from './pages/ProductForm';
+import './global.css';
 
-fetchClients();
 export function App() {
   return (
-    <>
-      <Header />
-    
-      <Card/>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/admin" replace />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/products/add" element={<ProductForm />} />
+        <Route path="/admin/products/edit/:id" element={<ProductForm />} />
+      </Routes>
+    </Router>
+  );
 }
+
 
