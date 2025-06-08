@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AdminHeader from '../components/AdminHeader';
-import ProductCard from '../components/ProductCard';
+import { AdminHeader } from '../components/AdminHeader';
+import { ProductCard } from '../components/ProductCard';
 import { Product } from '../models/Product';
 import { productService } from '../services/productService';
+import styles from './AdminDashboard.module.css';
 
 const AdminDashboard: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -47,31 +48,20 @@ const AdminDashboard: React.FC = () => {
     <div>
       <AdminHeader />
       <div className="container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--spacing-lg)' }}>
+        <div className={styles.headerRow}>
           <h2 className="page-title">Gerenciar Produtos</h2>
         </div>
 
         {loading && <p>Carregando produtos...</p>}
         
         {error && (
-          <div style={{ 
-            backgroundColor: 'rgba(178, 34, 34, 0.1)', 
-            border: '1px solid var(--color-primary)', 
-            padding: 'var(--spacing-md)', 
-            borderRadius: 'var(--border-radius-sm)',
-            marginBottom: 'var(--spacing-lg)'
-          }}>
+          <div className={styles.errorBox}>
             <p>{error}</p>
           </div>
         )}
 
         {!loading && !error && products.length === 0 && (
-          <div style={{ 
-            backgroundColor: 'var(--color-background-light)', 
-            padding: 'var(--spacing-lg)', 
-            borderRadius: 'var(--border-radius-md)',
-            textAlign: 'center'
-          }}>
+          <div className={styles.emptyBox}>
             <p>Nenhum produto cadastrado.</p>
             <button 
               className="btn-primary" 
@@ -95,12 +85,26 @@ const AdminDashboard: React.FC = () => {
           </div>
         )}
 
-        <button 
-          className="floating-action-button" 
+        <button
+          className="floating-action-button"
           onClick={handleAddProduct}
           aria-label="Adicionar produto"
         >
-          +
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ display: 'block' }}
+            aria-hidden="true"
+          >
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
         </button>
       </div>
     </div>
@@ -108,4 +112,3 @@ const AdminDashboard: React.FC = () => {
 };
 
 export default AdminDashboard;
-

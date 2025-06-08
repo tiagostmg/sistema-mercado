@@ -1,13 +1,14 @@
 import React from 'react';
 import { Product } from '../models/Product';
 import { useNavigate } from 'react-router-dom';
+import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
   product: Product;
   onDelete: (id: number) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) => {
   const navigate = useNavigate();
 
   const handleEdit = () => {
@@ -21,13 +22,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) => {
   };
 
   return (
-    <div className="card">
-      <h3>{product.name}</h3>
-      <div style={{ margin: '10px 0' }}>
+    <div className={styles.card}>
+      <h3 className={styles.cardTitle}>{product.name}</h3>
+      <div className={styles.cardInfo}>
         <p><strong>Preço:</strong> R$ {product.price.toFixed(2)}</p>
         <p><strong>Quantidade:</strong> {product.quantity}</p>
       </div>
-      <div className="card-actions">
+      <div className={styles.cardActions}>
         <button 
           className="btn-secondary" 
           onClick={handleEdit}
@@ -44,6 +45,3 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) => {
     </div>
   );
 };
-
-export default ProductCard;
-

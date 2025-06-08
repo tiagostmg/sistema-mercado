@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import AdminHeader from '../components/AdminHeader';
+import { AdminHeader } from '../components/AdminHeader';
 import { Product } from '../models/Product';
 import { productService } from '../services/productService';
 
@@ -166,4 +166,3 @@ const ProductForm: React.FC = () => {
 };
 
 export default ProductForm;
-
